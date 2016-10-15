@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HungryCells.Models.Patient>
+﻿
 @{
     ViewBag.Title = "Home Page";
 }
@@ -15,15 +15,5 @@
             <th>Status</th>
         </tr>
     </thead>
-    @foreach (var item in Model)
-    {
-    <tr>
-        <td>@Html.DisplayFor(model => item.FirstName)</td>
-        <td>@Html.DisplayFor(model => item.LastName)</td >
-        <td>@Html.DisplayFor(model => item.PatientID)</td>
-        <td>@Html.DisplayFor(model => item.BirthDate)</td>
-        <td><span class="label label-primary">Referred</span></td>
-    </tr>
-    }
 </table>
 </div>

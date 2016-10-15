@@ -8,6 +8,7 @@ using System.Web;
 
 namespace HungryCells.Models
 {
+
     public class Test
     {
         public int TestID { get; set; }
@@ -21,6 +22,8 @@ namespace HungryCells.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime TestDate { get; set; }
+
+        public virtual Patient Patient { get; set; }
         
     }
 }

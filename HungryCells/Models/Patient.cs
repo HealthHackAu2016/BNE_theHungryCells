@@ -8,9 +8,9 @@ namespace HungryCells.Models
 {
     public class Patient
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [DisplayName("UR")]
-        public int PatientID { get; set; }
+        public int PatientID { get; set; } 
+
+        public string UR { get; set; }
         
         [DisplayName("First Name")]
         public string FirstName { get; set; }
@@ -36,12 +36,26 @@ namespace HungryCells.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? WaitListed { get; set; }
 
-        public bool? DVA { get; set; }
-        public string Status { get; set; }
-        public string Procedure { get; set; }
-
         [DisplayName("Valve Type")]
         public string ValveType { get; set; }
+
+        public bool? DVA { get; set; }
+        public string Status { get; set; }
+        //public string Status {
+        //    get
+        //    {
+        //        if (true)
+        //        {
+        //            return "Referred";
+        //        }
+        //        return "x% of Tests Complete"
+        //        return "Fit for Surgery"
+        //        return "Not Fit for Surgery"
+                
+        //    }
+        //}
+        public string Procedure { get; set; }
+        public string PhoneNumber { get; set; }
 
         public virtual ICollection<Test> Tests { get; set; }
 
