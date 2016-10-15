@@ -21,7 +21,7 @@ namespace HungryCells.Models
         [DisplayName("DOB")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
 
         [DisplayName("Referral Date")]
         [DataType(DataType.Date)]
