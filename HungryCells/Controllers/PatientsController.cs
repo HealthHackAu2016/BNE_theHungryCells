@@ -47,7 +47,7 @@ namespace HungryCells.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PatientID,FirstName,LastName,BirthDate,ReferralDate,ReferralSource,WaitListed,DVA,Status,Procedure")] Patient patient)
+        public ActionResult Create([Bind(Include = "UR,FirstName,LastName,BirthDate,ReferralDate,ReferralSource,WaitListed,DVA,Status,Procedure")] Patient patient)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace HungryCells.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PatientID,FirstName,LastName,BirthDate,ReferralDate,ReferralSource,WaitListed,DVA,Status,Procedure")] Patient patient)
+        public ActionResult Edit([Bind(Include = "UR,FirstName,LastName,BirthDate,ReferralDate,ReferralSource,WaitListed,DVA,Status,Procedure")] Patient patient)
         {
             if (ModelState.IsValid)
             {

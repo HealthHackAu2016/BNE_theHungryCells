@@ -25,12 +25,16 @@ namespace HungryCells.Data
 
             var tests = new List<Test>
             {
-            new Test{TestName="PBAV"},
-            new Test{TestName="Echo"},
-            new Test{TestName="RFT"},
-            new Test{TestName="Angio Booking"},
-            new Test{TestName="CT Tavi Gated"},
-            new Test{TestName="3 Mensio"},
+                new Test{TestName="Surgeon Review"},
+                new Test{TestName="PBAV"},
+                new Test{TestName="Echo"},
+                new Test{TestName="RFTs"},
+                new Test{TestName="Angio"},
+                new Test{TestName="CT Tavi"},
+                new Test{TestName="3 Mensio"},
+                new Test{TestName="Carotid"},
+                new Test{TestName="Dental Clearance"},
+                new Test{TestName="Prof Walters r/v"}
             };
             tests.ForEach(s => context.Tests.Add(s));
             context.SaveChanges();
