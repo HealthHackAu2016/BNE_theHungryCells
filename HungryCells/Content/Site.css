@@ -33,10 +33,14 @@ textarea {
     text-align: left; 
 }
 
+#pageTitle{
+    color:gainsboro;
+}
+
 .footer {
-    position: fixed;
+    position: static;
     bottom: 0;
-    width: 65%;
+
 }
 
 #nameTitle {
@@ -44,5 +48,14 @@ textarea {
 }
 
 #editButton {
+    text-align: right;
+    padding-top: 30px;
+}
 
+#saveButton {
+    padding-top: 30px;
+}
+
+.form-group {
+    margin-bottom: 0px;
 }
