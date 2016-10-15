@@ -1,0 +1,90 @@
+﻿@model HungryCells.Models.Patient
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Patient</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReferralDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReferralDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReferralSource)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReferralSource)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WaitListed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WaitListed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DVA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DVA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Procedure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Procedure)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PatientID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
