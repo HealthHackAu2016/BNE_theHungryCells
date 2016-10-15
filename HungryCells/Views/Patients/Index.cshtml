@@ -10,7 +10,7 @@
             <tr>
                 <th>@Html.DisplayNameFor(model => model.FirstName)</th>
                 <th>@Html.DisplayNameFor(model => model.LastName)</th>
-                <th>@Html.DisplayNameFor(model => model.PatientID)</th>
+                <th>@Html.DisplayNameFor(model => model.UR)</th>
                 <th>@Html.DisplayNameFor(model => model.BirthDate)</th>
                 <th>Status</th>
             </tr>
@@ -20,7 +20,7 @@
             <tr>
                 <td>@Html.DisplayFor(model => item.FirstName)</td>
                 <td>@Html.DisplayFor(model => item.LastName)</td>
-                <td>@Html.DisplayFor(model => item.PatientID)</td>
+                <td>@Html.DisplayFor(model => item.UR)</td>
                 <td>@Html.DisplayFor(model => item.BirthDate)</td>
                 <td><span class="label label-primary">Referred</span></td>
                 <td>@Html.ActionLink("Edit", "Edit", new { id = item.PatientID }) | @Html.ActionLink("Details", "Details", new { id = item.PatientID })</td>
