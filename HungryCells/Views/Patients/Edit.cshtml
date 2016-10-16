@@ -122,27 +122,13 @@
                            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
                         </td>
                         <td>
-                            <div class="form-group">
-                                
+                            <div class="form-group">                   
                                 <div class="col-md-10">
-                                    <select name="Status">
-                                        <option value="Referred">Referred</option>
-                                        <option value="In Testing">In Testing</option>
-                                        <option value="Discussed">Discussed</option>
-                                        <option value="Femoral Tavi">Femoral Tavi</option>
-                                        <option value="Apical Tavi">Apical Tavi</option>
-                                        <option value="Open Heart Surgery">Open Heart Surgery</option>
-                                        <option value="Not Fit for Surgery">Not Fit for Surgery</option>
-                                        <option value="Completed">Completed</option>
-                                    </select>
+                                    @Html.DropDownListFor(model => model.Status, Model.Statuses, Model.Status, new { @class = "form-control" }) 
                                 </div>
                             </div>
                         </td>
                     </tr>
-
-
-                    
-
                 </table>
             </div>
         </div>
@@ -181,21 +167,6 @@
                         </div>
                     </td>
                     </tr>
-                    <tr>
-                       <td>
-                           @Html.LabelFor(model => model.WaitListed, htmlAttributes: new { @class = "control-label col-md-2" })
-                       </td>
-                        <td>
-                        <div class="form-group">
-                            
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.WaitListed, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.WaitListed, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                            </td>
-                    </tr>
-
                 </table>
 
             </div>
@@ -209,26 +180,43 @@
                 <table class="table table-hover">
                     <tr>
                         <td>
-                            @Html.LabelFor(model => model.Procedure, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.LabelFor(model => model.ProcedureDate, htmlAttributes: new { @class = "control-label col-md-2" })
                         </td>
                         <td>
                             <div class="form-group">
 
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Procedure, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Procedure, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.ProcedureDate, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ProcedureDate, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </td>
                      
                     </tr>
                     <tr>
-                        <td><strong>Type of Procedure</strong></td>
-                        <td></td>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.Procedure, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.Procedure, Model.Procedures, Model.Procedure, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td><strong>Type of Valve</strong></td>
-                        <td></td>
+                        <td>
+                            @Html.LabelFor(model => model.ValveType, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.ValveType, Model.ValveTypes, Model.ValveType, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </td>
                     </tr>
 
                 </table>
