@@ -4,6 +4,8 @@ using System.Net;
 using System.Web.Mvc;
 using HungryCells.Data;
 using HungryCells.Models;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace HungryCells.Controllers
 {
@@ -56,17 +58,16 @@ namespace HungryCells.Controllers
         }
 
         // GET: Patients/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+
             Patient patient = db.Patients.Find(id);
             if (patient == null)
             {
                 return HttpNotFound();
             }
+            var statuses = GetAllStatuses();
+            patient.Statuses = GetSelectListItems(statuses);
             return View(patient);
         }
 
@@ -77,6 +78,8 @@ namespace HungryCells.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "PatientID,UR,FirstName,LastName,BirthDate,ReferralDate,ReferralSource,WaitListed,DVA,Status,Procedure")] Patient patient)
         {
+            var statuses = GetAllStatuses();
+            patient.Statuses = GetSelectListItems(statuses);
             if (ModelState.IsValid)
             {
                 db.Entry(patient).State = EntityState.Modified;
@@ -120,5 +123,45 @@ namespace HungryCells.Controllers
             }
             base.Dispose(disposing);
         }
+
+        private IEnumerable<string> GetAllStatuses()
+        {
+            return new List<string>
+            {
+                "Referred",
+                "In Testing",
+                "Discussed",
+                "Femoral Tavi",
+                "Apical Tavi",
+                "Open Heart Surgery",
+                "Not Fit for Surgery",
+                "Completed",
+            };
+        }
+
+        // This function takes a list of strings and returns a list of SelectListItem objects.
+        // These objects are going to be used later in the edit page to render the
+        // DropDownList.
+        private IEnumerable<SelectListItem> GetSelectListItems(IEnumerable<string> elements)
+        {
+            // Create an empty list to hold result of the operation
+            var selectList = new List<SelectListItem>();
+
+            // For each string in the 'elements' variable, create a new SelectListItem object
+            // that has both its Value and Text properties set to a particular value.
+            // This will result in MVC rendering each item as:
+            //     <option value="State Name">State Name</option>
+            foreach (var element in elements)
+            {
+                selectList.Add(new SelectListItem
+                {
+                    Value = element,
+                    Text = element
+                });
+            }
+
+            return selectList;
+        }
+
     }
 }

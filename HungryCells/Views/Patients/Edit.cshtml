@@ -125,8 +125,16 @@
                             <div class="form-group">
                                 
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                    <select name="Status">
+                                        <option value="Referred">Referred</option>
+                                        <option value="In Testing">In Testing</option>
+                                        <option value="Discussed">Discussed</option>
+                                        <option value="Femoral Tavi">Femoral Tavi</option>
+                                        <option value="Apical Tavi">Apical Tavi</option>
+                                        <option value="Open Heart Surgery">Open Heart Surgery</option>
+                                        <option value="Not Fit for Surgery">Not Fit for Surgery</option>
+                                        <option value="Completed">Completed</option>
+                                    </select>
                                 </div>
                             </div>
                         </td>
