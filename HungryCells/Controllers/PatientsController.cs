@@ -57,6 +57,11 @@ namespace HungryCells.Controllers
             return View(patient);
         }
 
+        public ActionResult FollowUp(int id)
+        {
+            return View();
+        }
+
         // GET: Patients/Edit/5
         public ActionResult Edit(int id)
         {
