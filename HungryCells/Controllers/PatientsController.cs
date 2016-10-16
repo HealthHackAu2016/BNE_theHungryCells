@@ -4,7 +4,6 @@ using System.Net;
 using System.Web.Mvc;
 using HungryCells.Data;
 using HungryCells.Models;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace HungryCells.Controllers
@@ -54,16 +53,22 @@ namespace HungryCells.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PatientID,UR,FirstName,LastName,BirthDate,ReferralDate,ReferralSource,WaitListed,DVA,Status,Procedure")] Patient patient)
+        public ActionResult Create([Bind(Include = "PatientID,UR,FirstName,LastName,BirthDate,ReferralDate,ReferralSource,WaitListed,DVA,Status,ProcedureDate,Procedure,ValveType")] Patient patient)
         {
             if (ModelState.IsValid)
             {
+                patient.Status = "Referred";
                 db.Patients.Add(patient);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             return View(patient);
+        }
+
+        public ActionResult FollowUp(int id)
+        {
+            return View();
         }
 
         // GET: Patients/Edit/5
@@ -76,19 +81,25 @@ namespace HungryCells.Controllers
                 return HttpNotFound();
             }
             var statuses = GetAllStatuses();
+            var procedures = GetAllProcedures();
+            var valves = GetAllValves();
             patient.Statuses = GetSelectListItems(statuses);
+            patient.Procedures = GetSelectListItems(procedures);
+            patient.ValveTypes = GetSelectListItems(valves);
             return View(patient);
         }
 
         // POST: Patients/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PatientID,UR,FirstName,LastName,BirthDate,ReferralDate,ReferralSource,WaitListed,DVA,Status,Procedure")] Patient patient)
+        public ActionResult Edit([Bind(Include = "PatientID,UR,FirstName,LastName,BirthDate,ReferralDate,ReferralSource,WaitListed,DVA,Status,ProcedureDate,Procedure,ValveType")] Patient patient)
         {
             var statuses = GetAllStatuses();
+            var procedures = GetAllProcedures();
+            var valves = GetAllValves();
             patient.Statuses = GetSelectListItems(statuses);
+            patient.Procedures = GetSelectListItems(procedures);
+            patient.ValveTypes = GetSelectListItems(valves);
             if (ModelState.IsValid)
             {
                 db.Entry(patient).State = EntityState.Modified;
@@ -133,6 +144,7 @@ namespace HungryCells.Controllers
             base.Dispose(disposing);
         }
 
+        // Define the available statuses
         private IEnumerable<string> GetAllStatuses()
         {
             return new List<string>
@@ -140,11 +152,33 @@ namespace HungryCells.Controllers
                 "Referred",
                 "In Testing",
                 "Discussed",
-                "Femoral Tavi",
-                "Apical Tavi",
-                "Open Heart Surgery",
-                "Not Fit for Surgery",
-                "Completed",
+                "Having Procedure",
+                "Not fit for Procedure",
+                "Had Procedure",
+            };
+        }
+
+        // Define the available procedures
+        private IEnumerable<string> GetAllProcedures()
+        {
+            return new List<string>
+            {
+                "Femoral",
+                "Apical",
+            };
+        }
+
+        // Define the available valves
+        private IEnumerable<string> GetAllValves()
+        {
+            return new List<string>
+            {
+                "CoreValve",
+                "Edwards Implanted",
+                "Edwards Solace",
+                "LOTUS Valve",
+                "PORTICO",
+                "CENTERA",
             };
         }
 
