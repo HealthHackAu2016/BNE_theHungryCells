@@ -14,8 +14,17 @@ namespace HungryCells.Controllers
         private HeartRecordContext db = new HeartRecordContext();
 
         // GET: Patients
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+            var patients = from m in db.Patients
+                         select m;
+
+            if (!System.String.IsNullOrEmpty(searchString))
+            {
+                patients = patients.Where(s => s.LastName.Contains(searchString));
+                return View(patients);
+            }
+
             return View(db.Patients.ToList());
         }
 

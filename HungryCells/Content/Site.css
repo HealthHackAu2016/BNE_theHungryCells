@@ -38,9 +38,8 @@ textarea {
 }
 
 .footer {
-    position: static;
+    position: relative;
     bottom: 0;
-
 }
 
 #nameTitle {
@@ -66,5 +65,10 @@ textarea {
 
 #deleteName {
     color: red;
+}
+
+#createButton {
+    text-align: right;
+    float: right;
 }
 
