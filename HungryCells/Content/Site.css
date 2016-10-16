@@ -60,3 +60,11 @@ textarea {
     margin-bottom: 10px;
 }
 
+.submitButtons {
+    padding-top: 20px;
+}
+
+#deleteName {
+    color: red;
+}
+

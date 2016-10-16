@@ -94,8 +94,10 @@
 
                     </table>
                 </div>
-
+                
             </div>
+
+            @Html.ActionLink("Delete Patient", "Delete", "Patients", new { id = Model.PatientID }, new { @class = "btn btn-default"})
 
         </div>
 
