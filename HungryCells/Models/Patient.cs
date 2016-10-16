@@ -48,6 +48,7 @@ namespace HungryCells.Models
 
         [DisplayName("Valve Type")]
         public string ValveType { get; set; }
+        public IEnumerable<SelectListItem> ValveTypes { get; set; }
 
         public string PhoneNumber { get; set; }
 

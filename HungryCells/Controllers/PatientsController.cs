@@ -44,7 +44,7 @@ namespace HungryCells.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PatientID,UR,FirstName,LastName,BirthDate,ReferralDate,ReferralSource,WaitListed,DVA,Status,Procedure")] Patient patient)
+        public ActionResult Create([Bind(Include = "PatientID,UR,FirstName,LastName,BirthDate,ReferralDate,ReferralSource,WaitListed,DVA,Status,ProcedureDate,Procedure,ValveType")] Patient patient)
         {
             if (ModelState.IsValid)
             {
@@ -68,18 +68,24 @@ namespace HungryCells.Controllers
             }
             var statuses = GetAllStatuses();
             var procedures = GetAllProcedures();
+            var valves = GetAllValves();
             patient.Statuses = GetSelectListItems(statuses);
             patient.Procedures = GetSelectListItems(procedures);
+            patient.ValveTypes = GetSelectListItems(valves);
             return View(patient);
         }
 
         // POST: Patients/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PatientID,UR,FirstName,LastName,BirthDate,ReferralDate,ReferralSource,WaitListed,DVA,Status,Procedure")] Patient patient)
+        public ActionResult Edit([Bind(Include = "PatientID,UR,FirstName,LastName,BirthDate,ReferralDate,ReferralSource,WaitListed,DVA,Status,ProcedureDate,Procedure,ValveType")] Patient patient)
         {
             var statuses = GetAllStatuses();
+            var procedures = GetAllProcedures();
+            var valves = GetAllValves();
             patient.Statuses = GetSelectListItems(statuses);
+            patient.Procedures = GetSelectListItems(procedures);
+            patient.ValveTypes = GetSelectListItems(valves);
             if (ModelState.IsValid)
             {
                 db.Entry(patient).State = EntityState.Modified;
@@ -145,6 +151,20 @@ namespace HungryCells.Controllers
             {
                 "Femoral",
                 "Apical",
+            };
+        }
+
+        // Define the available valves
+        private IEnumerable<string> GetAllValves()
+        {
+            return new List<string>
+            {
+                "CoreValve",
+                "Edwards Implanted",
+                "Edwards Solace",
+                "LOTUS Valve",
+                "PORTICO",
+                "CENTERA",
             };
         }
 
