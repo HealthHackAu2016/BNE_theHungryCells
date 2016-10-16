@@ -32,21 +32,22 @@ namespace HungryCells.Models
         [DisplayName("Referral Source")]
         public string ReferralSource { get; set; }
 
-        [DisplayName("Wait Listed")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime? WaitListed { get; set; }
-
-        [DisplayName("Valve Type")]
-        public string ValveType { get; set; }
-
         public bool? DVA { get; set; }
 
         public string Status { get; set; }
         public IEnumerable<SelectListItem> Statuses { get; set; }
 
+        [DisplayName("Procedure Type")]
         public string Procedure { get; set; }
         public IEnumerable<SelectListItem> Procedures { get; set; }
+
+        [DisplayName("Procedure Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? ProcedureDate { get; set; }
+
+        [DisplayName("Valve Type")]
+        public string ValveType { get; set; }
 
         public string PhoneNumber { get; set; }
 

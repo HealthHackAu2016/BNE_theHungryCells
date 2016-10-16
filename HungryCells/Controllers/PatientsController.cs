@@ -4,7 +4,6 @@ using System.Net;
 using System.Web.Mvc;
 using HungryCells.Data;
 using HungryCells.Models;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace HungryCells.Controllers
@@ -72,8 +71,6 @@ namespace HungryCells.Controllers
         }
 
         // POST: Patients/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "PatientID,UR,FirstName,LastName,BirthDate,ReferralDate,ReferralSource,WaitListed,DVA,Status,Procedure")] Patient patient)
@@ -131,11 +128,9 @@ namespace HungryCells.Controllers
                 "Referred",
                 "In Testing",
                 "Discussed",
-                "Femoral Tavi",
-                "Apical Tavi",
-                "Open Heart Surgery",
-                "Not Fit for Surgery",
-                "Completed",
+                "Having Procedure",
+                "Not fit for Procedure",
+                "Had Procedure",
             };
         }
 

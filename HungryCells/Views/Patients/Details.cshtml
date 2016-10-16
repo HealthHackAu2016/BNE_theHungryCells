@@ -36,7 +36,7 @@
                         </tr>
                         <tr>
                             <td><strong>UR</strong></td>
-                            <td>@Html.DisplayFor(model => model.PatientID)</td>
+                            <td>@Html.DisplayFor(model => model.UR)</td>
                         </tr>
                         <tr>
                             <td><strong>DOB</strong></td>
@@ -64,11 +64,6 @@
                             <td><strong>Referral Source</strong></td>
                             <td>@Html.DisplayFor(model => model.ReferralSource)</td>
                         </tr>
-                        <tr>
-                            <td><strong>Wait Listed</strong></td>
-                            <td>@Html.DisplayFor(model => model.WaitListed)</td>
-                        </tr>
-
                     </table>
 
                 </div>
@@ -80,16 +75,46 @@
                 <div class="panel-body">
                     <table class="table table-hover">
                         <tr>
-                            <td><strong>Date of Procedure</strong></td>
-                            <td></td>
+                            <td>
+                                @Html.LabelFor(model => model.ProcedureDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                            </td>
+                            <td>
+                                <div class="form-group">
+
+                                    <div class="col-md-10">
+                                        @Html.DisplayFor(model => model.ProcedureDate, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ProcedureDate, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
+
                         </tr>
                         <tr>
-                            <td><strong>Type of Procedure</strong></td>
-                            <td></td>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(model => model.Procedure, htmlAttributes: new { @class = "control-label col-md-2" })
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        @Html.DisplayFor(model => model.Procedure, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Procedure, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
-                            <td><strong>Type of Valve</strong></td>
-                            <td></td>
+                            <td>
+                                @Html.LabelFor(model => model.ValveType, htmlAttributes: new { @class = "control-label col-md-2" })
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        @Html.DisplayFor(model => model.ValveType, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ValveType, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
 
                     </table>
