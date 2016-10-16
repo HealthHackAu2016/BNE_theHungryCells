@@ -23,7 +23,7 @@
                 <td>@Html.DisplayFor(model => item.LastName)</td>
                 <td>@Html.DisplayFor(model => item.UR)</td>
                 <td>@Html.DisplayFor(model => item.BirthDate)</td>
-                <td><span class="label label-primary">Referred</span></td>
+                <td>@Html.DisplayFor(model => item.Status)</td>
                 <td>@Html.ActionLink("Edit", "Edit", new { id = item.PatientID })</td>
             </tr>
         }
