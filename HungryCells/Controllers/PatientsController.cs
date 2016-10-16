@@ -48,6 +48,7 @@ namespace HungryCells.Controllers
         {
             if (ModelState.IsValid)
             {
+                patient.Status = "Referred";
                 db.Patients.Add(patient);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -66,7 +67,9 @@ namespace HungryCells.Controllers
                 return HttpNotFound();
             }
             var statuses = GetAllStatuses();
+            var procedures = GetAllProcedures();
             patient.Statuses = GetSelectListItems(statuses);
+            patient.Procedures = GetSelectListItems(procedures);
             return View(patient);
         }
 
@@ -121,6 +124,7 @@ namespace HungryCells.Controllers
             base.Dispose(disposing);
         }
 
+        // Define the available statuses
         private IEnumerable<string> GetAllStatuses()
         {
             return new List<string>
@@ -131,6 +135,16 @@ namespace HungryCells.Controllers
                 "Having Procedure",
                 "Not fit for Procedure",
                 "Had Procedure",
+            };
+        }
+
+        // Define the available procedures
+        private IEnumerable<string> GetAllProcedures()
+        {
+            return new List<string>
+            {
+                "Femoral",
+                "Apical",
             };
         }
 

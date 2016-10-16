@@ -201,8 +201,7 @@
                         <td>
                             <div class="form-group">
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Procedure, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Procedure, "", new { @class = "text-danger" })
+                                    @Html.DropDownListFor(model => model.Procedure, Model.Procedures, Model.Procedure)
                                 </div>
                             </div>
                         </td>
