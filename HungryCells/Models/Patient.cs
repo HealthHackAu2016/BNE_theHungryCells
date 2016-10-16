@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.Web.Mvc;
 
 namespace HungryCells.Models
 {
@@ -40,21 +41,13 @@ namespace HungryCells.Models
         public string ValveType { get; set; }
 
         public bool? DVA { get; set; }
+
         public string Status { get; set; }
-        //public string Status {
-        //    get
-        //    {
-        //        if (true)
-        //        {
-        //            return "Referred";
-        //        }
-        //        return "x% of Tests Complete"
-        //        return "Fit for Surgery"
-        //        return "Not Fit for Surgery"
-                
-        //    }
-        //}
+        public IEnumerable<SelectListItem> Statuses { get; set; }
+
         public string Procedure { get; set; }
+        public IEnumerable<SelectListItem> Procedures { get; set; }
+
         public string PhoneNumber { get; set; }
 
         public virtual ICollection<Test> Tests { get; set; }
