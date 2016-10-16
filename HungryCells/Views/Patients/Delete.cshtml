@@ -4,93 +4,27 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Patient</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+<h3>Are you sure you want to delete <span id="deleteName"> @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</span>?</h3>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+            <div class="container col-lg-offset-1 submitButtons">
+                <div class="row">
+                    <div class="form-group col-lg-1">
+                        <span>
+                            <input type="submit" value="Delete" class="btn btn-danger" />
+                        </span>
+                    </div>
+                    <div class="col-lg-1">
+                        @Html.ActionLink("Cancel", "Details", "Patients", new { id = Model.PatientID }, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </div>
+        }
+ 
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BirthDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ReferralDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ReferralDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ReferralSource)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ReferralSource)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.WaitListed)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.WaitListed)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DVA)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DVA)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Procedure)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Procedure)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
+            
